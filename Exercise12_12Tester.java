@@ -7,16 +7,20 @@ class Exercise12_12Tester {
 
   @BeforeAll
   static void setUpBeforeClass() throws Exception {}
-
+  
   @Test
   void testreformator() throws Exception {
     String[] args = {};
-    String s = "{";
+    String s = "{}";
     String s1 = s.trim();
     exceptionMethods em = new exceptionMethods(args, s, s1);
-    String actual = em.reformator(s, s1);
-    String expected = "{";
-    assertEquals(actual, expected);
+    Throwable e = null;
+    try {
+      em.reformator(s, s1);
+    } catch (Exception ex) {
+      e = ex;
+    }
+    assertTrue(e instanceof Exception);
   }
 
   @Test
