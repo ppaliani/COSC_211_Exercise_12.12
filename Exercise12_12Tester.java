@@ -39,9 +39,10 @@ class Exercise12_12Tester {
   void testcheckSource() throws Exception {
     String[] args = {};
     exceptionMethods em = new exceptionMethods(args);
+    File sourceFile = new File("C:\\Users\\Paul\\Downloads\\File.txt");
     Throwable e = null;
     try {
-      em.checkSource(args);
+      em.checkSource(args, sourceFile);
     } catch (Exception ex) {
       System.out.println("source file does not exist");
       e = ex;
@@ -52,16 +53,16 @@ class Exercise12_12Tester {
 
   @Test
   void testcheckCommand() throws Exception {
-    String[] args = {"hi"};
+    String[] args = {};
     exceptionMethods em = new exceptionMethods(args);
+    Throwable e = null;
     try {
       em.checkCommand(args);
     } catch (Exception ex) {
       System.out.println("args length does not equal 1");
+      e = ex;
     }
-    String actual = em.checkCommand(args);
-    String expected = "args length equals 1";
-    assertEquals(actual, expected);
+    assertTrue(e instanceof Exception);
   }
 
 }
